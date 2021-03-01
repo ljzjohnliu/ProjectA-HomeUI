@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
 }
+apply from: "../config.gradle"
 
 android {
     compileSdkVersion 30
@@ -37,8 +38,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
-    implementation "com.jakewharton:butterknife:10.2.3"
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    implementation "androidx.recyclerview:recyclerview:$recycler_view_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$fragment_version"
+    implementation "com.jakewharton:butterknife:$butter_knife_version"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butter_knife_version"
+
+    implementation "com.facebook.fresco:fresco:$fresco_version"
+
+    implementation 'com.sunfusheng:MarqueeView:1.4.1'
 }

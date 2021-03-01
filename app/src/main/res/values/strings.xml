@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ProjectA-HomeUI</string>
+
+    <string name="new_comer">&#160;新生报到\n NEWCOMER</string>
+    <string name="comment_str">%1$s~%2$s.. 你别在这里YY呀…</string>
 </resources>

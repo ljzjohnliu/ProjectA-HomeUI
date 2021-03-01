@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GroupAvatarView">
+        <!--头像的半径,dp为单位-->
+        <attr name="radius" format="reference|integer" />
+        <!--头像间的距离，为头像直径的长度的百分比，dp为单位-->
+        <attr name="space" format="reference|float" />
+        <!--最多显示多少个头像-->
+        <attr name="maxCount" format="reference|integer" />
+        <!--是否显示边框-->
+        <attr name="isShowFrame" format="reference|boolean" />
+        <!--边框颜色-->
+        <attr name="frameColor" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="CustonAvatar">
+        <attr name="defaultAvatar" format="reference" />
+        <attr name="isOnline" format="boolean"/>
+    </declare-styleable>
+</resources>
