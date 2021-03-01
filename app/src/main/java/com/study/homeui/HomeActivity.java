@@ -11,8 +11,7 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.study.homeui.adapter.NewWorldAdapter;
-import com.study.homeui.adapter.SimpleTestAdapter;
+import com.study.homeui.adapter.HomeAdapter;
 import com.study.homeui.adapter.home.IHomeInterface;
 import com.study.homeui.bean.HomeContentItem;
 import com.study.homeui.bean.HomeTitleItem;
@@ -29,7 +28,7 @@ import butterknife.OnClick;
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
 
-    private NewWorldAdapter mNewWorldAdapter;
+    private HomeAdapter mNewWorldAdapter;
     private List<IHomeInterface> newWorldList = new ArrayList<>();
 
     @BindView(R.id.title)
@@ -55,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
         mockData();
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mNewWorldAdapter = new NewWorldAdapter(newWorldList);
+        mNewWorldAdapter = new HomeAdapter(newWorldList);
         mRecyclerView.setAdapter(mNewWorldAdapter);
         mNewWorldAdapter.notifyDataSetChanged();
 

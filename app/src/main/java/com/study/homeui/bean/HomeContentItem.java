@@ -1,6 +1,6 @@
 package com.study.homeui.bean;
 
-import com.study.homeui.adapter.NewWorldAdapter;
+import com.study.homeui.adapter.HomeAdapter;
 import com.study.homeui.adapter.home.IHomeInterface;
 import com.study.homeui.widget.CustomModel;
 
@@ -92,7 +92,7 @@ public class HomeContentItem implements IHomeInterface {
 
     @Override
     public int getType() {
-        return NewWorldAdapter.VIEW_TYPE_CONTENT;
+        return HomeAdapter.VIEW_TYPE_CONTENT;
     }
 
     @Override

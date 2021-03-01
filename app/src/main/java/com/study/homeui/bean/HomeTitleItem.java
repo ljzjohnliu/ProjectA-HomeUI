@@ -1,6 +1,6 @@
 package com.study.homeui.bean;
 
-import com.study.homeui.adapter.NewWorldAdapter;
+import com.study.homeui.adapter.HomeAdapter;
 import com.study.homeui.adapter.home.IHomeInterface;
 
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class HomeTitleItem implements IHomeInterface {
 
     @Override
     public int getType() {
-        return NewWorldAdapter.VIEW_TYPE_HEAD;
+        return HomeAdapter.VIEW_TYPE_HEAD;
     }
 
     @Override

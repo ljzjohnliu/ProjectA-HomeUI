@@ -9,9 +9,8 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.study.homeui.R;
-import com.study.homeui.adapter.NewWorldAdapter;
+import com.study.homeui.adapter.HomeAdapter;
 import com.study.homeui.bean.HomeContentItem;
-import com.study.homeui.widget.CustomModel;
 import com.study.homeui.widget.GroupAvatarView;
 import com.sunfusheng.marqueeview.MarqueeView;
 
@@ -53,7 +52,7 @@ public class ContentViewHolder extends BaseHomeViewHolder<HomeContentItem> {
     @Override
     protected void onBindViewHolder(IHomeInterface item) {
         Log.d("ljz", "ContentViewHolder, onBindViewHolder: getType = " + item.getType());
-        if (item.getType() == NewWorldAdapter.VIEW_TYPE_CONTENT) {
+        if (item.getType() == HomeAdapter.VIEW_TYPE_CONTENT) {
             HomeContentItem homeNewClubItemInfo = (HomeContentItem) item;
 
             this.mTitle.setText(homeNewClubItemInfo.getTitle());

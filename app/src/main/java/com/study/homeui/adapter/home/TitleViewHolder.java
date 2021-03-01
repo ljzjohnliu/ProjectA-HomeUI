@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.ToggleButton;
 
 import com.study.homeui.R;
-import com.study.homeui.adapter.NewWorldAdapter;
+import com.study.homeui.adapter.HomeAdapter;
 import com.study.homeui.bean.HomeTitleItem;
 
 import butterknife.BindView;
@@ -35,7 +35,7 @@ public class TitleViewHolder extends BaseHomeViewHolder<HomeTitleItem> {
     @Override
     protected void onBindViewHolder(IHomeInterface item) {
         Log.d("ljz", "TitleViewHolder, onBindViewHolder: getType = " + item.getType());
-        if (item.getType() == NewWorldAdapter.VIEW_TYPE_HEAD) {
+        if (item.getType() == HomeAdapter.VIEW_TYPE_HEAD) {
             HomeTitleItem homeCityItem = (HomeTitleItem) item;
             Log.d("ljz", "TitleViewHolder, onBindViewHolder:getCityImg = " + homeCityItem.getCityImg());
             if (homeCityItem.getCityImg() != null) {

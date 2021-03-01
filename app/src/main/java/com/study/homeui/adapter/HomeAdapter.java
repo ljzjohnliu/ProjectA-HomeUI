@@ -20,19 +20,19 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class NewWorldAdapter extends RecyclerView.Adapter<BaseHomeViewHolder> {
-    private static final String TAG = "NewWorldAdapter";
+public class HomeAdapter extends RecyclerView.Adapter<BaseHomeViewHolder> {
+    private static final String TAG = "HomeAdapter";
 
     public final static int VIEW_TYPE_HEAD = 0;
     public final static int VIEW_TYPE_CONTENT = 1;
 
     private List<IHomeInterface> mData;
 
-    private NewWorldAdapter.OnItemClickListener onItemClickListener;
+    private HomeAdapter.OnItemClickListener onItemClickListener;
 
     View.OnClickListener ivGoToChildClickListener;
 
-    public NewWorldAdapter(List<IHomeInterface> data) {
+    public HomeAdapter(List<IHomeInterface> data) {
         this.mData = data;
     }
 
@@ -74,7 +74,7 @@ public class NewWorldAdapter extends RecyclerView.Adapter<BaseHomeViewHolder> {
      *
      * @param listener
      */
-    public void setOnItemClickListener(NewWorldAdapter.OnItemClickListener listener) {
+    public void setOnItemClickListener(HomeAdapter.OnItemClickListener listener) {
         this.onItemClickListener = listener;
     }
 
@@ -117,7 +117,7 @@ public class NewWorldAdapter extends RecyclerView.Adapter<BaseHomeViewHolder> {
             }
         });
 
-        if (mData.get(position).getType() == NewWorldAdapter.VIEW_TYPE_HEAD) {
+        if (mData.get(position).getType() == HomeAdapter.VIEW_TYPE_HEAD) {
             boolean isChecked = ((TitleViewHolder) holder).ivGoToChildLv.isChecked();
             int number = ((HomeTitleItem) mData.get(position)).getClubNum();
             if (number > 3) {
