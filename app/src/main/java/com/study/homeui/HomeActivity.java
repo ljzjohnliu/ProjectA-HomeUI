@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
@@ -16,6 +17,7 @@ import com.study.homeui.adapter.home.IHomeInterface;
 import com.study.homeui.bean.HomeContentItem;
 import com.study.homeui.bean.HomeTitleItem;
 import com.study.homeui.utils.SystemUIUtils;
+import com.study.homeui.utils.ToastUtil;
 import com.study.homeui.widget.CustomModel;
 
 import java.util.ArrayList;
@@ -63,6 +65,8 @@ public class HomeActivity extends AppCompatActivity {
     @OnClick(R.id.fragment_container)
     public void onClick() {
         Log.d(TAG, "onClick: fragment_container is clicked!!");
+//        Toast.makeText(this, "底层view被点击了！", Toast.LENGTH_SHORT).show();
+        ToastUtil.showGreenToast(this, "底层view被点击了！");
     }
 
     private List<String> avatarList = new ArrayList<>();
