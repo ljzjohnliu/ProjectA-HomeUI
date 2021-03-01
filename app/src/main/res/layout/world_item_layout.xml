@@ -37,7 +37,7 @@
 
 
     <com.study.homeui.widget.GroupAvatarView
-        android:id="@+id/daview2"
+        android:id="@+id/group_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

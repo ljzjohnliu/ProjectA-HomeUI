@@ -3,6 +3,7 @@ package com.study.homeui.adapter.home;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ToggleButton;
 
@@ -10,15 +11,25 @@ import com.study.homeui.R;
 import com.study.homeui.adapter.NewWorldAdapter;
 import com.study.homeui.bean.HomeTitleItem;
 
+import butterknife.BindView;
+
 public class TitleViewHolder extends BaseHomeViewHolder<HomeTitleItem> {
 
+    @BindView(R.id.location_title)
     ImageView ivLocationTitle;
+    @BindView(R.id.iv_goToChildLV)
     public ToggleButton ivGoToChildLv;
 
     public TitleViewHolder(View itemView) {
         super(itemView);
-        ivLocationTitle = itemView.findViewById(R.id.location_title);
-        ivGoToChildLv = itemView.findViewById(R.id.iv_goToChildLV);
+    }
+
+    public TitleViewHolder(ViewGroup parent, int layoutResId) {
+        super(parent, layoutResId);
+    }
+
+    public TitleViewHolder(ViewGroup parent, View itemView) {
+        super(parent, itemView);
     }
 
     @Override

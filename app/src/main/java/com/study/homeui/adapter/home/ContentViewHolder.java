@@ -3,6 +3,7 @@ package com.study.homeui.adapter.home;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,27 +15,39 @@ import com.study.homeui.widget.CustomModel;
 import com.study.homeui.widget.GroupAvatarView;
 import com.sunfusheng.marqueeview.MarqueeView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ContentViewHolder extends BaseHomeViewHolder<HomeContentItem> {
 
+    @BindView(R.id.rv_title)
     TextView mTitle;
+    @BindView(R.id.hong_bao_num)
     TextView mHongBaoNum;
-    TextView mDes;
-    MarqueeView<CustomModel> marqueeView;
+    @BindView(R.id.group_avatar)
     GroupAvatarView groupAvatarView;
+    @BindView(R.id.rv_des)
+    TextView mDes;
+    @BindView(R.id.marqueeview)
+    MarqueeView marqueeView;
+    @BindView(R.id.club_status_img)
     SimpleDraweeView clubStatusImg;
-    RelativeLayout clubCoverLy;
+    @BindView(R.id.club_cover_img)
     SimpleDraweeView clubCoverImg;
+    @BindView(R.id.club_cover_layout)
+    RelativeLayout clubCoverLy;
 
     public ContentViewHolder(View itemView) {
         super(itemView);
-        mTitle = itemView.findViewById(R.id.rv_title);
-        mHongBaoNum = itemView.findViewById(R.id.hong_bao_num);
-        mDes = itemView.findViewById(R.id.rv_des);
-        marqueeView = itemView.findViewById(R.id.marqueeview);
-        groupAvatarView = itemView.findViewById(R.id.daview2);
-        clubStatusImg = itemView.findViewById(R.id.club_status_img);
-        clubCoverLy = itemView.findViewById(R.id.club_cover_layout);
-        clubCoverImg = itemView.findViewById(R.id.club_cover_img);
+    }
+
+    public ContentViewHolder(ViewGroup parent, int layoutResId) {
+        super(parent, layoutResId);
+        ButterKnife.bind(this, view);
+    }
+
+    public ContentViewHolder(ViewGroup parent, View itemView) {
+        super(parent, itemView);
     }
 
     @Override
@@ -42,6 +55,7 @@ public class ContentViewHolder extends BaseHomeViewHolder<HomeContentItem> {
         Log.d("ljz", "ContentViewHolder, onBindViewHolder: getType = " + item.getType());
         if (item.getType() == NewWorldAdapter.VIEW_TYPE_CONTENT) {
             HomeContentItem homeNewClubItemInfo = (HomeContentItem) item;
+
             this.mTitle.setText(homeNewClubItemInfo.getTitle());
 
             // 绑定数据

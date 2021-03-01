@@ -89,7 +89,9 @@ public class NewWorldAdapter extends RecyclerView.Adapter<BaseHomeViewHolder> {
         switch (viewType) {
             case VIEW_TYPE_HEAD:
                 return new TitleViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.world_title_layout, parent, false));
+//                return new TitleViewHolder(parent, R.layout.world_title_layout);
             case VIEW_TYPE_CONTENT:
+//                return new ContentViewHolder(parent, R.layout.world_item_layout);
                 return new ContentViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.world_item_layout, parent, false));
             default:
                 return new ContentViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.world_item_layout, parent, false));
