@@ -24,7 +24,7 @@
         android:clickable="true"
         android:focusable="true" />
 
-    <androidx.core.widget.NestedScrollView
+    <com.study.homeui.widget.MyNestedScrollView
         android:id="@+id/nestedscrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,6 +59,6 @@
                 android:layout_height="0dp"
                 android:background="#000000ff" />
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </com.study.homeui.widget.MyNestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
