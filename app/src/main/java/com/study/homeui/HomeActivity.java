@@ -1,10 +1,10 @@
 package com.study.homeui;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hanter.xpulltorefresh.PullToRefreshLayout;
 import com.study.homeui.adapter.HomeAdapter;
 import com.study.homeui.adapter.home.IHomeInterface;
 import com.study.homeui.bean.HomeContentItem;
@@ -32,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private HomeAdapter mNewWorldAdapter;
     private List<IHomeInterface> newWorldList = new ArrayList<>();
+    private Handler mHandler = new Handler();
 
     @BindView(R.id.title)
     TextView title;
@@ -43,6 +45,8 @@ public class HomeActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     @BindView(R.id.nestedscrollview)
     NestedScrollView nestedscrollview;
+    @BindView(R.id.home_swipe_layout)
+    PullToRefreshLayout homeSwipeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,34 @@ public class HomeActivity extends AppCompatActivity {
         mNewWorldAdapter = new HomeAdapter(newWorldList);
         mRecyclerView.setAdapter(mNewWorldAdapter);
         mNewWorldAdapter.notifyDataSetChanged();
+
+        homeSwipeLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshLayout refreshView) {
+                // 下拉刷新
+                Log.d(TAG, "onPullDownToRefresh: ---------------------------");
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "run: ************completePullDownRefresh***********");
+                        homeSwipeLayout.completePullDownRefresh();
+                    }
+                }, 1000);
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshLayout refreshView) {
+                // 上拉刷新
+                Log.d(TAG, "onPullUpToRefresh: ----------------------------");
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "run: ************completePullDownRefresh***********");
+                        homeSwipeLayout.completePullUpRefresh();
+                    }
+                }, 1000);
+            }
+        });
 
     }
 
