@@ -1,17 +1,22 @@
 package com.study.homeui;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener;
 import com.study.homeui.adapter.HomeAdapter;
 import com.study.homeui.adapter.home.IHomeInterface;
 import com.study.homeui.bean.HomeContentItem;
@@ -33,6 +38,9 @@ public class HomeActivity extends AppCompatActivity {
     private HomeAdapter mNewWorldAdapter;
     private List<IHomeInterface> newWorldList = new ArrayList<>();
 
+    private boolean isLoadMore = false;
+    private Handler mHandler = new Handler();
+
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.fragment_container)
@@ -43,6 +51,8 @@ public class HomeActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     @BindView(R.id.nestedscrollview)
     NestedScrollView nestedscrollview;
+    @BindView(R.id.home_swipe_layout)
+    SmartRefreshLayout homeSwipeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +70,47 @@ public class HomeActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mNewWorldAdapter);
         mNewWorldAdapter.notifyDataSetChanged();
 
+        homeSwipeLayout = findViewById(R.id.home_swipe_layout);
+        homeSwipeLayout.setEnableRefresh(true);
+        homeSwipeLayout.setEnableAutoLoadMore(true);
+//        homeSwipeLayout.setOnRefreshListener(new OnRefreshListener() {
+//            @Override
+//            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+//                Log.d(TAG, "---------------------------onRefresh------------------------");
+//            }
+//        });
+        homeSwipeLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                Log.d(TAG, "---------------------------onLoadMore------------------------");
+                isLoadMore = true;
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "****************finishLoadMore********************");
+                        homeSwipeLayout.finishLoadMore();
+                    }
+                }, 1000);
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                Log.d(TAG, "---------------------------onRefresh------------------------");
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "****************finishRefresh********************");
+                        homeSwipeLayout.finishRefresh();
+                    }
+                }, 1000);
+            }
+        });
+//        homeSwipeLayout.setEnableAutoLoadMore(true);
+//        homeSwipeLayout.setEnableNestedScroll(true);//是否启用嵌套滚动
+//        homeSwipeLayout.setEnableOverScrollBounce(true);//是否启用越界回弹
+
+        homeSwipeLayout.setDragRate(0.8f);//显示下拉高度/手指真实下拉高度=阻尼效果
+        homeSwipeLayout.setReboundDuration(300);//回弹动画时长（毫秒）
     }
 
     @OnClick(R.id.fragment_container)

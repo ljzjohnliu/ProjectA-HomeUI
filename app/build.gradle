@@ -46,4 +46,8 @@ dependencies {
     implementation "com.facebook.fresco:fresco:$fresco_version"
 
     implementation 'com.sunfusheng:MarqueeView:1.4.1'
+
+    implementation  "com.scwang.smart:refresh-layout-kernel:$smart_refresh_version"      //核心必须依赖
+    implementation  "com.scwang.smart:refresh-header-classics:$smart_refresh_version"    //经典刷新头
+    implementation  "com.scwang.smart:refresh-footer-classics:$smart_refresh_version"    //经典加载
 }

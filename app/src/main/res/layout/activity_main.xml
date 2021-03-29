@@ -43,16 +43,46 @@
             <View
                 android:id="@+id/recyclerView_head"
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
+                android:layout_height="220dp"
                 android:background="#0000ff00"
                 android:visibility="visible" />
 
-            <androidx.recyclerview.widget.RecyclerView
+           <!-- <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:nestedScrollingEnabled="true"
-                android:overScrollMode="always" />
+                android:overScrollMode="always" />-->
+
+            <com.scwang.smart.refresh.layout.SmartRefreshLayout
+                android:id="@+id/home_swipe_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible">
+
+                <com.scwang.smart.refresh.header.ClassicsHeader
+                    android:id="@+id/brand_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srlTextPulling="刷新" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="0dp"
+                    android:fadeScrollbars="false"
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
+
+                <com.scwang.smart.refresh.footer.ClassicsFooter
+                    android:id="@+id/brand_footer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srlTextPulling="加载更多" />
+
+            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
             <View
                 android:layout_width="match_parent"
